@@ -7,13 +7,13 @@ const players = [{
   invite: 'firstblood',
 },{
   name: 'Eirik A.',
-  invite: 'misteltein',
+  invite: 'audi',
 },{
   name: 'Jorgen A.',
-  invite: 'magiskjul',
+  invite: 'manu',
 },{
   name: 'Alexander P.',
-  invite: 'ribbefett',
+  invite: 'millenniumfalcon',
 },{
   name: 'Lucas P.',
   invite: 'lukeskywalker',
@@ -31,10 +31,10 @@ const players = [{
   invite: 'pewdiepie',
 },{
   name: 'Torgeir S.',
-  invite: 'iptelefoni',
+  invite: 'novaoffice',
 },{
   name: 'Fredrik L.',
-  invite: 'reactjs',
+  invite: 'beelife',
 },{
   name: 'Sondre H.',
   invite: 'javalife',

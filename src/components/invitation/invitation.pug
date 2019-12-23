@@ -227,6 +227,14 @@ style.
     display: inline-block;
     width: 20px;
     height: 20px;
+    animation-name: lds-dual-ring;
+    animation-duration: 1.2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: lds-dual-ring;
+    -webkit-animation-duration: 1.2s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
   }
   .lds-dual-ring:after {
     content: " ";
@@ -237,17 +245,13 @@ style.
     border-radius: 50%;
     border: 3px solid #fff;
     border-color: #fff transparent #fff transparent;
-    animation-name: lds-dual-ring;
-    animation-duration: 1.2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
   }
   @keyframes lds-dual-ring {
-    from {
+    0% {
       transform: rotateZ(0deg);
       -webkit-transform: rotateZ(0deg);
     }
-    to {
+    100% {
       transform: rotateZ(360deg);
       -webkit-transform: rotateZ(360deg);
     }

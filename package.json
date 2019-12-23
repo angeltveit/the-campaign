@@ -7,9 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "budo src --dir public --serve build.js --live --open -- -t babelify",
     "watch": "watchify src/index.js -o public/build.js -t [babelify] -p [ browserify-hmr -m websocket --supportModes [ websocket ] ]",
-    "build": "browserify src/index.js -o public/build.js -t babelify"
-    "safestart":"node --experimental-modules server"
+    "build": "browserify src/index.js -o public/build.js -t babelify",
+    "safestart": "node --experimental-modules index.js"
   },
+  "@std/esm": "cjs",
   "author": "Torbjorn Angeltveit",
   "license": "ISC",
   "type": "module",
@@ -29,6 +30,7 @@
   },
   "dependencies": {
     "@scoutgg/widgets": "^2.0.0",
+    "@std/esm": "^0.26.0",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "budo": "^11.6.3",

@@ -38,6 +38,9 @@ const players = [{
 },{
   name: 'Sondre H.',
   invite: 'javalife',
+},{
+  name: 'Stian S.',
+  invite: 'steelsky',
 }]
 emitter.on('mongodbConnected', async function() {
   await mongo('players').insertMany(players)

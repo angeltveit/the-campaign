@@ -50,7 +50,7 @@ export default class Invitation extends HTMLElement {
     this.next()
   }
   next() {
-    if(this.players.length >= 12 && this.you) {
+    if(this.players.length >= 13 && this.you) {
       this.state = 'done'
     } else if(this.you) {
       this.state = 'rank'

@@ -1,0 +1,26 @@
+doctype html
+
+html(lang="en")
+head
+  meta(charset="utf-8")
+  meta(name="viewport" content="width=device-width, initial-scale=1")
+  style.
+    @font-face {
+      font-family: gas;
+      src: url(gas.ttf);
+    }
+    @font-face {
+      font-family: dpcomic;
+      src: url(dpcomic.ttf);
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      font-family: gas, sans-serif;
+      background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+    }
+
+body
+  campaign-invitation( invite=invite )
+  script(src="build.js")

@@ -1,0 +1,303 @@
+if state === 'join'
+  .neon-text-green.center.welcome
+    .part.animate.from-left Du har blitt
+    .part.animate.from-top invitert til
+    .part.animate.from-right.flicker tidenes kamp
+
+  .neon-text-purple.animate.fade-in.nickname.title Kallenavn:
+
+  input.neon-text-green.animate.fade-in.nickname(
+    (input)=setNickname(e)
+  )
+  .button.neon.neon-text-purple.animate.fade-in.join(
+    class={ hidden: !entered },
+    (click)=join()
+  ) BLI MED
+if state === 'done'
+  .gift-card
+    img.logo(src='/wasteland.png')
+    .info
+      .explain Tidenes kamp er på Wasteland!
+      .explain 12 Spillere
+      .explain Beste spiller vinner pokal
+    img.players-poster(
+      src='/lasergame.jpg'
+    )
+if ['rank', 'done'].includes(state)
+  if state === 'rank'
+    .waiting
+      .explain.neon.neon-text-purple Venter på alle spillere 
+        .lds-dual-ring.neon
+  if state === 'done'
+    .explain.neon.neon-text-purple Rangeringsliste:
+
+  .grid
+    .header Player
+    .header Points
+    each player in players.sort((a,b) => new Date(a.joined) - new Date(b.joined))
+      .col.header=`${player.nickname} (${player.name || 'Unknown player'})`
+      .col.header=`${player.points || 0} pts`
+
+
+
+
+if state === 'welcome'
+  .button.neon.neon-text-purple.enter(
+    (click)=enter()
+  ) Trykk her
+
+style.
+  :host {
+    font-size: 3em;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    box-sizing: border-box;
+    position: relative;
+  }
+  .gift-card {
+    height: 100vh;
+    background-image: url(/laserguy.jpg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+  }
+  .info > .explain {
+    margin-top: 0;
+    filter: drop-shadow(1px 1px 1px rgba(0,0,0,1));
+  }
+  .gift-card > .info {
+    margin: 1em 0;
+  }
+  .gift-card > .logo {
+    height: 100px;
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 1em;
+  }
+  .players-poster {
+    width: 100%;
+    margin-top: auto;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    color: red;
+    font-size: .4em;
+    text-align: left;
+    margin: 1em;
+  }
+  .header {
+    color: #fff;
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #db0000,
+      0 0 20px #db0000,
+      0 0 40px #db0000,
+      0 0 80px #db0000,
+      0 0 90px #db0000;
+  }
+  .col {
+    padding: .25em 0;
+    color: #fff;
+    text-shadow:
+      0 0 5px #b1fdfe,
+      0 0 10px #b1fdfe,
+      0 0 20px #b1fdfe,
+      0 0 40px #47b6b7,
+      0 0 80px #47b6b7;
+  }
+  .explain {
+    margin-top: 1em;
+    font-size: .5em;
+  }
+  .hidden {
+    display: none;
+  }
+  .neon-text-green {
+    color: #fff;
+    text-shadow:
+      0 0 5px #b1fdfe,
+      0 0 10px #b1fdfe,
+      0 0 20px #b1fdfe,
+      0 0 40px #47b6b7,
+      0 0 80px #47b6b7,
+      0 0 90px #47b6b7,
+      0 0 100px #47b6b7,
+      0 0 150px #47b6b7;
+  }
+  .neon-text-purple {
+    color: #b1fdfe;
+    text-shadow:
+      0 0 5px #f4bdfc,
+      0 0 10px #f4bdfc,
+      0 0 20px #f4bdfc,
+      0 0 40px #db05fc,
+      0 0 80px #db05fc,
+      0 0 90px #db05fc,
+      0 0 100px #db05fc,
+      0 0 150px #db05fc;
+  }
+  .waiting {
+    height: 2.5em;
+    overflow: hidden;
+  }
+  .neon {
+    filter: drop-shadow(2px 6px 22px rgba(219, 5, 252,1));
+  }
+  .nickname {
+    animation-delay: 5s !important;
+  }
+  .nickname.title {
+    margin-top: 2em;
+  }
+  .button {
+    border: 5px solid #fff;
+    border-radius: .25em;
+    margin: .25em 1em;
+    text-align: center;
+  }
+  .center {
+    text-align: center
+  }
+  .flex {
+    display: flex;
+  }
+  .welcome {
+    margin-top: 1em;
+  }
+  .animate {
+    animation-duration: 4s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+  }
+  .animate.from-left {
+    animation-name: from-left;
+  }
+  .animate.from-right {
+    animation-name: from-right;
+  }
+  .animate.from-top {
+    animation-name: from-top;
+  }
+  .animate.fade-in {
+    animation-name: fade-in;
+  }
+  .animate.flicker {
+    animation-name: flicker;
+    animation-delay: 5s;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  .join {
+    animation-delay: 5s;
+  }
+  .enter {
+    margin-top: 3em;
+  }
+  input {
+    background: transparent;
+    border: 5px solid #fff;
+    font-size: 1em;
+    width: 300px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    color: #47b6b7;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: dpcomic, sans-serif;
+    outline: none;
+  }
+  .lds-dual-ring {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin: 0px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation-name: lds-dual-ring;
+    animation-duration: 1.2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  @keyframes lds-dual-ring {
+    from {
+      transform: rotateZ(0deg);
+      -webkit-transform: rotateZ(0deg);
+    }
+    to {
+      transform: rotateZ(360deg);
+      -webkit-transform: rotateZ(360deg);
+    }
+  }
+  @keyframes flicker {
+    0% {
+      opacity: .5
+    }
+    5% {
+      opacity: 1;
+    }
+    8% {
+      opacity: .3;
+    }
+    10% {
+      opacity: 1;
+    }
+    15 % {
+      opacity: .7;
+    }
+    18% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes from-top {
+    from {
+      transform: translateY(-200%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes from-left {
+    from {
+      transform: translateX(-200%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+    @keyframes from-right {
+    from {
+      transform: translateX(200%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
